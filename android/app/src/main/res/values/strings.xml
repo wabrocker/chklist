@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">chklist</string>
+    <string name="title_activity_main">chklist</string>
+    <string name="package_name">com.billbrocker.chklist</string>
+    <string name="custom_url_scheme">com.billbrocker.chklist</string>
+</resources>
