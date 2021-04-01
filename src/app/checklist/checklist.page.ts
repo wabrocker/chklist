@@ -18,6 +18,7 @@ export class ChecklistPage implements OnInit, OnDestroy {
   public checklist: Checklist = {
     id: "",
     title: "",
+    ionicon: "",
     items: [], 
   };
 
@@ -73,6 +74,27 @@ export class ChecklistPage implements OnInit, OnDestroy {
         text: "Save",
         handler: (data) => {
           this.checklistService.updateItemInChecklist(this.checklist.id, item.id, data.name);
+          this.slidingList.closeSlidingItems();
+        },
+      }, ],
+    });
+    alert.present();
+  }
+
+  async resetItemIcon(item: ChecklistItem): Promise<void> {
+    const alert = await this.alertCtrl.create({
+      header: "Reset Item Icon",
+      message: "Enter the new name of the Icon for this checklist below:",
+      inputs: [ {
+        type: "text",
+        name: "iname",
+      }, ],
+      buttons: [ {
+        text: "Cancel",
+      }, {
+        text: "Save",
+        handler: (data) => {
+          this.checklistService.updateItemIconInChecklist(this.checklist.id, item.id, data.iname);
           this.slidingList.closeSlidingItems();
         },
       }, ],

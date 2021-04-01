@@ -40,6 +40,7 @@ export class ChecklistService {
     const newChecklist = {
         id: this.generateSlug(title),
         title: title,
+        ionicon: '',
         items: [],
     };
 
@@ -55,6 +56,14 @@ export class ChecklistService {
     this.save();
   }
 
+  async updateChecklistIcon(checklistId: string, newIcon: string): Promise<void> {
+    this.checklists = this.checklists.map((checklist) => {
+        return checklist.id === checklistId ? { ...checklist, ionicon: newIcon } : checklist;
+    });
+
+    this.save();
+  }
+
   async removeChecklist(checklistId: string): Promise<void> {
     this.checklists = this.checklists.filter((checklist) => checklist.id !== checklistId);
     this.save();
@@ -64,6 +73,7 @@ export class ChecklistService {
     const newItem = {
       id: Date.now().toString(),
       title: title,
+      ionicon: '',
       checked: false,
     };
     this.checklists = this.checklists.map((checklist) => {
@@ -90,6 +100,21 @@ export class ChecklistService {
             items: [
               ...checklist.items.map((item) =>
                 item.id === itemId ? { ...item, title: newTitle } : item
+              ),
+            ],
+          }
+        : checklist;
+    });
+    this.save();
+  }
+
+  updateItemIconInChecklist(checklistId: string, itemId: string, newIcon: string): void {
+    this.checklists = this.checklists.map((checklist) => {
+      return checklist.id === checklistId
+        ? { ...checklist,
+            items: [
+              ...checklist.items.map((item) =>
+                item.id === itemId ? { ...item, ionicon: newIcon } : item
               ),
             ],
           }
