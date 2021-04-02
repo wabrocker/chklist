@@ -84,7 +84,7 @@ export class ChecklistPage implements OnInit, OnDestroy {
   async resetItemIcon(item: ChecklistItem): Promise<void> {
     const alert = await this.alertCtrl.create({
       header: "Reset Item Icon",
-      message: "Enter the new name of the Icon for this checklist below:",
+      message: `Enter the new name of the Icon for this item below: (vs ${item.ionicon})`,
       inputs: [ {
         type: "text",
         name: "iname",

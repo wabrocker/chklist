@@ -78,7 +78,7 @@ export class HomePage implements OnInit {
   async resetChecklistIcon(checklist: Checklist): Promise<void> {
     const alert = await this.alertCtrl.create({
       header: "Reset Checklist Icon",
-      message: "Enter the new Icon of this checklist below:",
+      message: `Enter the new name of the Icon for this checklist below: (vs ${checklist.ionicon})`,
       inputs: [
         {
           type: "text",
