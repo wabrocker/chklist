@@ -1,6 +1,9 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="success">
-    <ion-title> {{ checklist.title }} </ion-title>
+    <ion-title> 
+      <ion-icon size="large" [name]="checklist.ionicon"></ion-icon>
+      {{ checklist.title }}
+    </ion-title>
     <ion-buttons slot="start">
       <ion-back-button color="light" defaultHref="/checklists">
       </ion-back-button>
